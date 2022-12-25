@@ -1,5 +1,6 @@
 <?php
 function uniqIdWithEmail($str) {
+	$max = 16;
 	$stepOne = 1000;
 	$stepTwo = hexdec(hash("crc32", $str));
 	$stepThree = hexdec(hash("crc32b", $str));
@@ -10,7 +11,7 @@ function uniqIdWithEmail($str) {
 	$hid = preg_replace("/[a-zA-Z]/", "", ($stepTwo.$stepThree.$stepFour.$stepFive.$stepSix.$stepSeven));
 	$hid = preg_replace("/(\d)\1+/", "$1", $hid);
 	$hid = str_replace(['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'], '', $hid);
-	$hid = $stepOne.((strlen($hid)>16)?substr($hid, 0, 16):$hid);
+	$hid = $stepOne.((strlen($hid)>$max)?substr($hid, 0, $max):$hid);
 	return $hid;
 }
 echo uniqIdWithEmail("info@oxcakmak.com");
