@@ -1,6 +1,6 @@
 # uniqidwithemailaddress
-Create Unique Id With Email Address
-Usage
+Create Unique Id With Email Address<br>
+Usage:
 ```
 <?php
 echo uniqIdWithEmail("info@oxcakmak.com");
